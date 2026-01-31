@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happiest Birthday 💖🎂</title>
+
+<style>
+body {
+    margin: 0;
+    background: black;
+    overflow: hidden;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* Background Video */
+video {
+    position: fixed;
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+}
+
+/* Overlay */
+.overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.55);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    z-index: 2;
+}
+
+.content {
+    transform: translateY(-20px);
+}
+
+/* Name */
+h1 {
+    font-size: 3.3rem;
+    color: #ff4d6d;
+    text-shadow: 0 0 15px #ff4d6d, 0 0 30px #ff1e56;
+    animation: glow 2s infinite alternate;
+}
+
+/* Message */
+p {
+    font-size: 1.3rem;
+    max-width: 700px;
+    margin: 15px auto;
+    opacity: 0;
+    animation: fadeIn 3s forwards 2s;
+}
+
+/* Cake */
+.cake {
+    font-size: 5rem;
+    margin-top: 25px;
+    animation: popIn 1.5s ease forwards 1s;
+    opacity: 0;
+}
+
+/* Candle flicker */
+.cake span {
+    display: inline-block;
+    animation: flicker 0.15s infinite alternate;
+}
+
+/* Animations */
+@keyframes glow {
+    from { text-shadow: 0 0 10px #ff4d6d; }
+    to { text-shadow: 0 0 30px #ff1e56, 0 0 60px #ff758f; }
+}
+
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+
+@keyframes popIn {
+    0% {
+        transform: scale(0.3);
+        opacity: 0;
+    }
+    70% {
+        transform: scale(1.1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes flicker {
+    from { transform: rotate(-2deg) scale(1); }
+    to { transform: rotate(2deg) scale(1.05); }
+}
+
+/* Heart Particles */
+.heart {
+    position: fixed;
+    bottom: -20px;
+    color: #ff4d6d;
+    font-size: 20px;
+    animation: floatUp linear infinite;
+    z-index: 1;
+    opacity: 0.8;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-110vh) scale(1.5);
+        opacity: 0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Background Video -->
+<video autoplay muted loop>
+    <source src="birthday.mp4" type="video/mp4">
+</video>
+
+<!-- Overlay Content -->
+<div class="overlay">
+    <div class="content">
+        <h1>Happy Birthday, ❣️Charu Shekhawat Jii ❣️</h1>
+
+        <p>
+            You make everything better just by being there 💫  
+            Hope today gives you the same happiness you give others.
+        </p>
+
+        <!-- Cake Animation -->
+        <div class="cake">
+            🎂<span>🕯️</span><span>🕯️</span><span>🕯️</span>
+        </div>
+    </div>
+</div>
+
+<!-- Heart Particle Script -->
+<script>
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "🫶🏻💗";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (3 + Math.random() * 4) + "s";
+    heart.style.fontSize = (15 + Math.random() * 25) + "px";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 7000);
+}
+
+setInterval(createHeart, 300);
+</script>
+
+</body>
+</html>
